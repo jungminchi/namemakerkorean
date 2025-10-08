@@ -20,13 +20,15 @@ female_names = [
 
 st.subheader("이름 생성 옵션")
 selected_surname = st.selectbox("성을 선택하세요", surnames)
-gender = st.radio("성별을 선택하세요", ("남성", "여성"))
+gender = st.radio("성별을 선택하세요", ("남성", "여성", "LGBTQ+"))
 
 if st.button("이름 생성"):
     if gender == "남성":
         given_name = random.choice(male_names)
-    else:
+    elif gender == "여성":
         given_name = random.choice(female_names)
+    else:
+        given_name = random.choice(male_names + female_names)
     full_name = selected_surname + given_name
     st.success(f"당신의 이름은 **{full_name}** 입니다!")
 
